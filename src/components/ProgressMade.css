@@ -1,0 +1,6 @@
+.Progress-made {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    height: 16px;
+    transform: translateX(-0.9px) translateY(-1.2px);
+}

@@ -1,15 +1,56 @@
 import React from "react";
 import "./Card.css";
+import ProgressBar from "./ProgressBar";
+import Stats from "./Stats";
+import Tally from "./Tally";
+
+
 
 function Card(props) {
+
+    //Can probably turn this into a reduct function
+    function calcTimeComplete(log) {
+        let timeComplete = 0;
+        for (let entry of log) {
+            timeComplete += entry.timeInMinutes;
+        }
+        return timeComplete;
+      }
+
+    function calcPercentComplete(timeComplete, totalTimePerLevel) {
+        const percentComplete = (timeComplete / totalTimePerLevel) * 100;
+        return percentComplete;
+    }
+
+    function calcLevel(totalTimePerLevel, timeComplete) {
+        const progressPercent = timeComplete / totalTimePerLevel;
+    
+        if (progressPercent % 1 === 0) {
+            return progressPercent + 1;
+        } else if (progressPercent > 1) {
+            return Math.ceil(progressPercent);
+        } else {
+            return 1;
+        }
+    }
+
+    
+    const MINUTES_IN_HOUR = 60;
+    const totalTimePerLevel = 5 * MINUTES_IN_HOUR;
+    const timeComplete = calcTimeComplete(props.log);
+    const percentComplete = calcPercentComplete(timeComplete, totalTimePerLevel);
+    const level = calcLevel(totalTimePerLevel, timeComplete);
+    const hoursPerLevel = totalTimePerLevel / MINUTES_IN_HOUR;
+  
+    
+    
+
     return (
         <div className="Container">
             <h2>{props.name}</h2>
-            <div className="Progress-bar">
-                <div className="Progress-made Js-react-progress"></div>
-            </div>
-            <div className="React-stats Js-react-stats"></div>
-            <div class="Progress-tally"></div>
+            <ProgressBar percentComplete={percentComplete} />
+            <Stats percentComplete={percentComplete} level={level} hoursPerLevel={hoursPerLevel} />
+            <Tally />
         </div>
     );
 }
