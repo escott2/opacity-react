@@ -3,6 +3,7 @@ import "./Card.css";
 import ProgressBar from "./ProgressBar";
 import Stats from "./Stats";
 import Tally from "./Tally";
+import Form from "./Form";
 
 
 
@@ -51,6 +52,7 @@ function Card(props) {
             <ProgressBar percentComplete={percentComplete} />
             <Stats percentComplete={percentComplete} level={level} hoursPerLevel={hoursPerLevel} />
             <Tally />
+            <Form index={props.index} handleSubmitTime={props.handleSubmitTime}/>
         </div>
     );
 }

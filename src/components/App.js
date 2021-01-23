@@ -5,32 +5,37 @@ import Header from './Header';
 import Card from './Card';
 import skills from "../assets/data.js";
 
-// function createCard(topic) {
-//   return (
-//     <Card
-//       key={topic.id}
-//       id={topic.id}
-//       name={topic.name}
-//     />
-//   );
-// }
-
-
 
 function App() {
 
   const [skillLogs, setSkillLogs] = useState([...skills])
 
-  function createCard(topic) {
-  return (
-    <Card
-      key={topic.id}
-      id={topic.id}
-      name={topic.name}
-      log={topic.log}
-    />
-  );
-}
+  function handleSubmitTime(time, index) {
+    
+    setSkillLogs( prevState => {
+      const updatedLogs = [ ...prevState]
+      const log = {...updatedLogs[index]};
+      // const newTimeIndex = log.log.length();
+      console.log(log);
+      log.log.push({timeInMinutes: time})
+
+      return [...updatedLogs];
+    })
+  }
+
+
+//   function createCard(topic, index) {
+//   return (
+//     <Card
+//       key={topic.id}
+//       id={topic.id}
+//       index={index}
+//       name={topic.name}
+//       log={topic.log}
+//       handleSubmitTime={handleSubmitTime}
+//     />
+//   );
+// }
 
   return (
     <div className="App">
@@ -38,7 +43,16 @@ function App() {
         <Header />
       </header>
       <main>
-        {skillLogs.map(createCard)}
+        {skillLogs.map((topic, index) => 
+          <Card
+            key={topic.id}
+            id={topic.id}
+            index={index}
+            name={topic.name}
+            log={topic.log}
+            handleSubmitTime={handleSubmitTime}
+          />
+        )}
       </main>
     </div>
   );
