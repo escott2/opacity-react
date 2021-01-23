@@ -10,7 +10,7 @@ const skills = [
         }, 
         {
             date: "11/12/20",
-            timeInMinutes: 44,
+            timeInMinutes: 84,
             lastStep: "Watched Team Treehouse Videos",
             nextStep: "Review Team Treehouse Videos and Create something with React."
         }
