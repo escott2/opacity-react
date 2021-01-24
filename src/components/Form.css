@@ -1,0 +1,35 @@
+.Form-wrapper {
+    background-color: #F5F5F5;
+    width: 100%;
+}
+
+.Form-flex {
+    width: 450px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.Time-input {
+    padding: 0.25em;
+    margin: 0.5em;
+    font-size: 18px;
+    width: 75px;
+    border-style: solid;
+    border: solid #C2CFD8 0.25em;
+    text-align: center;
+
+}
+
+button {
+    width: 100px;
+    height: 35px;
+    border-radius: 5px;
+    border: solid 0.25em #AEBAC2;
+    background-color: #C2CFD8;
+
+    /* background-color: black; */
+    /* color: white; */
+    /* padding: 0.1em; */
+}
