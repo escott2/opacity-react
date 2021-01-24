@@ -2,5 +2,11 @@ h1 {
     font-size: 2.5rem;
     text-align: center;
     margin: 1em;
+    margin-bottom: 0.25em;
     font-weight: 600;
+}
+
+.Sub-heading {
+    text-align: center;
+    margin-bottom: 1em;
 }

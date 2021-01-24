@@ -1,5 +1,5 @@
 import logo from '../logo.svg';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './App.css';
 import Header from './Header';
 import Card from './Card';
@@ -8,7 +8,28 @@ import skills from "../assets/data.js";
 
 function App() {
 
-  const [skillLogs, setSkillLogs] = useState([...skills])
+  // const [skillLogs, setSkillLogs] = useState([...skills]);
+
+  const [skillLogs, setSkillLogs] = useState([]);
+
+  useEffect(() => {
+    const localSkillsTest = JSON.parse(localStorage.getItem('log')) || [...skills];
+    setSkillLogs([...localSkillsTest])
+  }, []); 
+
+  function supportsLocalStorage() {
+    try {
+      return 'localStorage' in window && window['localStorage'] !== null;
+    } catch(e) {
+      console.log(e);
+      return false;
+    }
+  }
+  
+  function saveDataToLocal() {
+    console.log(`skill log test: ${JSON.stringify(skillLogs)}`);
+    localStorage.setItem('log', JSON.stringify(skillLogs));
+  }
 
   function handleSubmitTime(time, index) {
     
@@ -21,6 +42,11 @@ function App() {
 
       return [...updatedLogs];
     })
+
+    if (supportsLocalStorage()) {
+      saveDataToLocal();
+    }
+
   }
 
 

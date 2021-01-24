@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import "./Form.css";
 
 function Form(props) {
 
@@ -12,17 +13,20 @@ function Form(props) {
     }
 
     return (
-        <form>
-            <label for="minutes">Minutes Spent:</label>
-            <input onChange={handleChange} type="text" name="minutes" id="minutes" value={time}></input>
-            <button
-                onClick={(event) => {
-                props.handleSubmitTime(time, index)
-                setTime(0);
-                event.preventDefault();
-            }}
-            >Submit</button>
-        </form>
+        <div className="Form-wrapper">
+            <form className="Form-flex">
+                <label>Minutes Spent:
+                <input className="Time-input" onChange={handleChange} type="text" name="minutes" id="minutes" value={time}></input>
+                </label>
+                <button
+                    onClick={(event) => {
+                    props.handleSubmitTime(time, index)
+                    setTime(0);
+                    event.preventDefault();
+                }}
+                >Submit</button>
+            </form>
+        </div>
     )
 }
 
