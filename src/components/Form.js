@@ -13,8 +13,9 @@ function Form(props) {
 
     return (
         <form>
-            <label for="minutes">Minutes Spent:</label>
+            <label>Minutes Spent:
             <input onChange={handleChange} type="text" name="minutes" id="minutes" value={time}></input>
+            </label>
             <button
                 onClick={(event) => {
                 props.handleSubmitTime(time, index)

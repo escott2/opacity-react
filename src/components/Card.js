@@ -20,7 +20,10 @@ function Card(props) {
 
     function calcPercentComplete(timeComplete, totalTimePerLevel) {
         const percentComplete = (timeComplete / totalTimePerLevel) * 100;
-        return percentComplete;
+
+        //Renders percent correctly, at each level.
+        const percentRemainder = percentComplete % 100;
+        return percentRemainder;
     }
 
     function calcLevel(totalTimePerLevel, timeComplete) {
