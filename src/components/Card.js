@@ -54,7 +54,7 @@ function Card(props) {
             <h2>{props.name}</h2>
             <ProgressBar percentComplete={percentComplete} />
             <Stats percentComplete={percentComplete} level={level} hoursPerLevel={hoursPerLevel} />
-            <Tally />
+            <Tally level={level} />
             <Form index={props.index} handleSubmitTime={props.handleSubmitTime}/>
         </div>
     );
