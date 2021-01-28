@@ -16,7 +16,13 @@ function Form(props) {
         <div className="Form-wrapper">
             <form className="Form-flex">
                 <label className="Input-Group">Minutes Spent
-                <input className="Time-input" onChange={handleChange} type="text" name="minutes" id="minutes" value={time}></input>
+                    <input 
+                        className="Time-input"
+                        onChange={handleChange}
+                        type="text" name="minutes"
+                        id="minutes"
+                        value={time}>
+                    </input>
                 </label>
                 <button
                     onClick={(event) => {

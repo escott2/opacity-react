@@ -23,6 +23,8 @@ function Tally(props) {
 
 
 
+
+    
     return (
         <div className="Progress-tally">
             <h3>Overall Progress:</h3>

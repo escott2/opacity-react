@@ -45,6 +45,7 @@ function Card(props) {
     const percentComplete = calcPercentComplete(timeComplete, totalTimePerLevel);
     const level = calcLevel(totalTimePerLevel, timeComplete);
     const hoursPerLevel = totalTimePerLevel / MINUTES_IN_HOUR;
+    const index = props.index;
   
     
     
@@ -55,7 +56,14 @@ function Card(props) {
             <ProgressBar percentComplete={percentComplete} />
             <Stats percentComplete={percentComplete} level={level} hoursPerLevel={hoursPerLevel} />
             <Tally level={level} timeComplete={timeComplete} />
-            <Form index={props.index} handleSubmitTime={props.handleSubmitTime}/>
+            <Form index={index} handleSubmitTime={props.handleSubmitTime}/>
+            <button
+                onClick={() => {
+                    props.removeLog(index);
+                    console.log(index);
+                }}
+            >
+            Remove Log</button>
         </div>
     );
 }
