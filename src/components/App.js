@@ -8,14 +8,18 @@ import skills from "../assets/data.js";
 
 function App() {
 
-  // const [skillLogs, setSkillLogs] = useState([...skills]);
-
   const [skillLogs, setSkillLogs] = useState([]);
 
   useEffect(() => {
     const localSkillsTest = JSON.parse(localStorage.getItem('log')) || [...skills];
     setSkillLogs([...localSkillsTest])
   }, []); 
+
+  useEffect(() => {
+    if (supportsLocalStorage()) {
+      saveDataToLocal();
+    }
+  });
 
   function supportsLocalStorage() {
     try {
@@ -27,41 +31,67 @@ function App() {
   }
   
   function saveDataToLocal() {
-    console.log(`skill log test: ${JSON.stringify(skillLogs)}`);
     localStorage.setItem('log', JSON.stringify(skillLogs));
   }
 
   function handleSubmitTime(time, index) {
-    
     setSkillLogs( prevState => {
       const updatedLogs = [ ...prevState]
-      const log = {...updatedLogs[index]};
-      // const newTimeIndex = log.log.length();
-      console.log(log);
+      const log = { ...updatedLogs[index]};
       log.log.push({timeInMinutes: time})
 
       return [...updatedLogs];
     })
 
-    if (supportsLocalStorage()) {
-      saveDataToLocal();
-    }
-
+    // if (supportsLocalStorage()) {
+    //   saveDataToLocal();
+    // }
   }
 
+  function addLog() {
+    setSkillLogs(prevState => {
+      const updatedLogs = [ ...prevState];
+      //need to create unique id, this method will not work when items are spliced.
+      const newId = updatedLogs.length + 1;
+      //CHANGE -- collect from input
+      const name = "test name";
+      const time = 5;
 
-//   function createCard(topic, index) {
-//   return (
-//     <Card
-//       key={topic.id}
-//       id={topic.id}
-//       index={index}
-//       name={topic.name}
-//       log={topic.log}
-//       handleSubmitTime={handleSubmitTime}
-//     />
-//   );
-// }
+      updatedLogs.push(
+        {
+          name: `${name}`,
+          id: `${newId}`,
+          log: [
+            {
+            timeInMinutes: time
+            } 
+          ]
+        }
+      )
+
+    console.log([...updatedLogs]);
+    return [ ...updatedLogs];
+    })
+
+    console.log(skillLogs);
+
+    // if (supportsLocalStorage()) {
+    //   saveDataToLocal();
+    // }
+  }
+
+  function removeLog(index) {
+    setSkillLogs(prevState => {
+      const updatedLogs = [ ...prevState];
+      updatedLogs.splice(index, 1);
+      return [ ...updatedLogs];
+    })
+
+    // if (supportsLocalStorage()) {
+    //   saveDataToLocal();
+    // }
+  }
+
 
   return (
     <div className="App">
@@ -77,8 +107,10 @@ function App() {
             name={topic.name}
             log={topic.log}
             handleSubmitTime={handleSubmitTime}
+            removeLog={removeLog}
           />
         )}
+        <button onClick={addLog}>Add log</button>
       </main>
     </div>
   );

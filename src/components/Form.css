@@ -1,23 +1,31 @@
 .Form-wrapper {
-    background-color: #F5F5F5;
+    background-color: #41666B;
     width: 100%;
+    color: white;
+    padding: 1em;
 }
 
 .Form-flex {
-    width: 450px;
+    max-width: 450px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     margin: 0 auto;
 }
 
+.Input-Group {
+    background-color: #012E40;
+    padding: 1em 2em;
+}
+
 .Time-input {
-    padding: 0.25em;
+    padding: 0.5em;
     margin: 0.5em;
+    margin-left: 1em;
     font-size: 18px;
-    width: 75px;
+    width: 65px;
     border-style: solid;
-    border: solid #C2CFD8 0.25em;
+    border: solid #012E40 0.1em;
     text-align: center;
 
 }
@@ -26,10 +34,7 @@ button {
     width: 100px;
     height: 35px;
     border-radius: 5px;
-    border: solid 0.25em #AEBAC2;
-    background-color: #C2CFD8;
-
-    /* background-color: black; */
-    /* color: white; */
-    /* padding: 0.1em; */
+    border: solid 0.1em #012E40;
+    background-color: #012E40;
+    color: white;
 }

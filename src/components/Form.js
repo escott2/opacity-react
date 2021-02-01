@@ -15,8 +15,14 @@ function Form(props) {
     return (
         <div className="Form-wrapper">
             <form className="Form-flex">
-                <label>Minutes Spent:
-                <input className="Time-input" onChange={handleChange} type="text" name="minutes" id="minutes" value={time}></input>
+                <label className="Input-Group">Minutes Spent
+                    <input 
+                        className="Time-input"
+                        onChange={handleChange}
+                        type="text" name="minutes"
+                        id="minutes"
+                        value={time}>
+                    </input>
                 </label>
                 <button
                     onClick={(event) => {
@@ -24,7 +30,7 @@ function Form(props) {
                     setTime(0);
                     event.preventDefault();
                 }}
-                >Submit</button>
+                >submit</button>
             </form>
         </div>
     )
