@@ -15,6 +15,12 @@ function App() {
     setSkillLogs([...localSkillsTest])
   }, []); 
 
+  useEffect(() => {
+    if (supportsLocalStorage()) {
+      saveDataToLocal();
+    }
+  });
+
   function supportsLocalStorage() {
     try {
       return 'localStorage' in window && window['localStorage'] !== null;
@@ -37,13 +43,13 @@ function App() {
       return [...updatedLogs];
     })
 
-    if (supportsLocalStorage()) {
-      saveDataToLocal();
-    }
+    // if (supportsLocalStorage()) {
+    //   saveDataToLocal();
+    // }
   }
 
   function addLog() {
-    setSkillLogs (prevState => {
+    setSkillLogs(prevState => {
       const updatedLogs = [ ...prevState];
       //need to create unique id, this method will not work when items are spliced.
       const newId = updatedLogs.length + 1;
@@ -67,21 +73,23 @@ function App() {
     return [ ...updatedLogs];
     })
 
-    if (supportsLocalStorage()) {
-      saveDataToLocal();
-    }
+    console.log(skillLogs);
+
+    // if (supportsLocalStorage()) {
+    //   saveDataToLocal();
+    // }
   }
 
   function removeLog(index) {
-    setSkillLogs (prevState => {
+    setSkillLogs(prevState => {
       const updatedLogs = [ ...prevState];
       updatedLogs.splice(index, 1);
       return [ ...updatedLogs];
     })
 
-    if (supportsLocalStorage()) {
-      saveDataToLocal();
-    }
+    // if (supportsLocalStorage()) {
+    //   saveDataToLocal();
+    // }
   }
 
 
