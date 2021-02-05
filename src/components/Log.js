@@ -1,5 +1,5 @@
 import React from "react";
-import "./Card.css";
+import "./Log.css";
 import ProgressBar from "./ProgressBar";
 import Stats from "./Stats";
 import Tally from "./Tally";
@@ -7,9 +7,9 @@ import Form from "./Form";
 
 
 
-function Card(props) {
+function Log(props) {
 
-    //Can probably turn this into a reduct function
+    //Can probably turn this into a reduce function
     function calcTimeComplete(log) {
         let timeComplete = 0;
         for (let entry of log) {
@@ -68,4 +68,4 @@ function Card(props) {
     );
 }
 
-export default Card;
+export default Log;
